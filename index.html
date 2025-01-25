@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stone-Pap-Scissor</title>
+  <link rel="icon" href="RPS.png" type="image/x-icon">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <script src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+  <audio id="win-audio" src="Popper.mp3" preload="auto"></audio>
+  <style>
+    /* Loader Styles */
+    #loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999; /* Ensures the loader is on top */
+    }
+
+    #main-content {
+      display: none; /* Initially hide the main content */
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <!-- Loader Section -->
+  <div id="loader">
+    <dotlottie-player 
+      id="lottie-player"
+      src="https://lottie.host/fbe77dd1-ca54-47f6-a4dd-0229808fde33/H8D118AZRB.lottie"
+      background="#FFFFFF"
+      speed="1"
+      style="width: 300px; height: 300px"
+      direction="1"
+      playMode="normal"
+      autoplay>
+    </dotlottie-player>
+  </div>
+
+  <!-- Main Content -->
+  <div id="main-content">
+    <header class="header">
+      <div class="logo-container">
+        <img src="DJPATIL031.png" alt="Logo" class="logo">
+        <div>
+          <h1 class="logo-text">BinaryBrains</h1>
+          <p class="logo-subtext">Brains That Think in Binary</p>
+        </div>
+      </div>
+      <div class="controls">
+        <button class="mode-toggle" onclick="toggleMode()">
+          <i class="fas fa-adjust"></i>
+        </button>
+        <button class="audio-toggle" onclick="toggleAudio()" id="audio-btn">
+          <i class="fas fa-volume-up"></i>
+          <span style="margin-left: 8px;"></span> <!-- Adding gap with text -->
+        </button>
+        
+      </div>
+    </header>
+    
+    
+    <!-- Game Section -->
+    <div class="game-container">
+      <div class="game-header">
+        <h2>Stone Paper Scissors</h2>
+        <div class="score">
+          <p>Player: <span id="player-score">0</span></p>
+          <p>Computer: <span id="computer-score">0</span></p>
+        </div>
+      </div>
+
+      <div class="choices">
+        <div class="choice" id="stone" onclick="playGame('stone')">
+          <i class="fas fa-hand-rock"></i>
+          <p>Stone</p>
+        </div>
+        <div class="choice" id="paper" onclick="playGame('paper')">
+          <i class="fas fa-hand-paper"></i>
+          <p>Paper</p>
+        </div>
+        <div class="choice" id="scissors" onclick="playGame('scissors')">
+          <i class="fas fa-hand-scissors"></i>
+          <p>Scissors</p>
+        </div>
+      </div>
+
+      <div class="result">
+        <p id="result-text">Choose your move!</p>
+      </div>
+    </div>
+
+    <!-- Social Links -->
+    <div class="social-links">
+      <a href="https://www.linkedin.com/in/mr-dhananjay-patil-0172902a2/" target="_blank" class="social-icon linkedin">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://x.com/binarycode4u" target="_blank" class="social-icon x">
+        <i class="fab fa-x-twitter"></i>
+      </a>
+      <a href="https://github.com/BinaryC0DE4U" target="_blank" class="social-icon github">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Pop-up Message -->
+    <div id="win-popup" class="win-popup">
+      <span class="win-message">You Win!</span>
+    </div>
+
+    <!-- Add Confetti Script -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  </div>
+
+  <script>
+    const loader = document.getElementById('loader');
+    const mainContent = document.getElementById('main-content');
+  
+    // Set a timeout for 2 seconds to hide the loader and show the main content
+    setTimeout(() => {
+      loader.style.display = 'none'; // Hide loader
+      mainContent.style.display = 'block'; // Show main content
+    }, 1250); // 2000ms = 2 seconds
+  </script>
+  
+</body>
+</html>
